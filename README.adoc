@@ -1,0 +1,10 @@
+= Kustomize Playground
+
+This repo is just intended to create a small playground to test weird things :)
+
+== How to test
+
+[source, bash]
+----
+oc apply -k my-org/overlays/dev/ --dry-run=server -o yaml > output-dev.yaml
+----

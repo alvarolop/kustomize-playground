@@ -1,0 +1,5 @@
+- op: remove
+  path: ../../base/cm-ca-ldap.yaml
+
+- op: add
+  path: cm-ca-ldap.yaml
