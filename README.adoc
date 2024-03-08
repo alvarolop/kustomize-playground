@@ -21,6 +21,31 @@ However, if you want to modify the same file, you cannot remove it and later app
 +
     error: no matches for Id Service.v1.[noGrp]/nginx.[noNs]; failed to find unique target for patch Service.v1.[noGrp]/nginx.[noNs]
 
+== Organization structure
+
+[source, bash]
+----
+my-org/
+├── base
+│   ├── cm-ca-ldap.yaml
+│   ├── deployment-nginx.yaml
+│   ├── kustomization.yaml
+│   └── svc-nginx.yaml
+└── overlays
+    ├── dev
+    │   ├── cm-ca-ldap.yaml
+    │   ├── jsonpatch.yaml
+    │   └── kustomization.yaml
+    ├── pre
+    │   ├── delete.deployment-nginx.yaml
+    │   ├── kustomization.yaml
+    │   └── sts-nginx.yaml
+    └── pro
+        ├── delete.svc-nginx-label-app.yaml
+        ├── kustomization.yaml
+        └── svc-nginx.yaml
+----
+
 == How to test?
 
 [source, bash]
