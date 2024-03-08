@@ -59,3 +59,10 @@ oc apply -k my-org/overlays/pre/ --dry-run=server -o yaml > output-pre.yaml
 # Evaluate the Pro Environment
 oc apply -k my-org/overlays/pro/ --dry-run=server -o yaml > output-pro.yaml
 ----
+
+
+== Useful links to evaluate
+
+* Generate a ConfigMap without suffix: https://github.com/fabianlee/blogcode/blob/master/kubectl/kustomize-delete/kustomization.yaml#L11-L17
+* Delete files entirely using patch: https://fabianlee.org/2023/04/20/kubernetes-using-a-delete-patch-with-kustomize/
+* Gerald Nunn example about Components: https://github.com/gnunn-gitops/cluster-config/tree/main
