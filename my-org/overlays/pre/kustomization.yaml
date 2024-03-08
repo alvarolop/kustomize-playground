@@ -3,7 +3,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../base
+- sts-nginx.yaml
 
 patches:
-- path: cm-ca-ldap.yaml
+  - path: delete.deployment-nginx.yaml
 ...

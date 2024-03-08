@@ -10,4 +10,10 @@ patches:
     kind: ConfigMap
     name: ca-ldap
     namespace: openshift-config
+#  - |-
+#    $patch: delete
+#    apiVersion: v1
+#    kind: Namespace
+#    metadata:
+#      name: myns
 ...

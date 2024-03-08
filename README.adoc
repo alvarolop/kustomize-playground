@@ -2,9 +2,35 @@
 
 This repo is just intended to create a small playground to test weird things :)
 
-== How to test
+
+== How to promote through environments?
+
+If you want to remove a file entirely, and don't want to modify it, you can use the method in PRE (Move from Deployments to StatefulSets):
+
+1) Define a `delete.deployment-nginx.yaml` file beginning with `$delete` and a clear identifier of the object from the `base`.
+2) Add that file to the `patches` section in `Kustomization`.
+3) Optionally, you can add new files to the `resources` section.
+
+However, if you want to modify the same file, you cannot remove it and later apply it again with the new configuration. It was more or less explored in the PRO environment, but in summary:
+
+* If you delete it in Patch and add the new version in `resources`:
++
+    error: accumulating resources: accumulation err='merging resources from 'svc-nginx.yaml': may not add resource with an already registered id: Service.v1.[noGrp]/nginx.[noNs]': must build at directory: '/home/alvaro/apps/700_Training/kustomize-playground/my-org/overlays/pro/svc-nginx.yaml': file is not directory
++
+* If you delete it in Patch and add the new version in `patches`:
++
+    error: no matches for Id Service.v1.[noGrp]/nginx.[noNs]; failed to find unique target for patch Service.v1.[noGrp]/nginx.[noNs]
+
+== How to test?
 
 [source, bash]
 ----
+# Evaluate the Dev Environment
 oc apply -k my-org/overlays/dev/ --dry-run=server -o yaml > output-dev.yaml
+
+# Evaluate the Pre Environment
+oc apply -k my-org/overlays/pre/ --dry-run=server -o yaml > output-pre.yaml
+
+# Evaluate the Pro Environment
+oc apply -k my-org/overlays/pro/ --dry-run=server -o yaml > output-pro.yaml
 ----

@@ -3,4 +3,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../base
+- svc-nginx.yaml
+
+patches:
+  - path: delete.svc-nginx-label-app.yaml
+
 ...
